@@ -20,7 +20,7 @@
 
 # expand and parse the node's runlist for recipes and find attributes of the form node[<recipe>]['firewall']['rules']
 # append them to the node['firewall']['rules'] array attribute
-node.expand!.recipes.each do |recipe|
+node.expand!('disk').recipes.each do |recipe|
   Chef::Log.debug "ufw::recipes: #{recipe}"
   cookbook = recipe.split('::')[0]
   #get the cookbook attributes if there are any
