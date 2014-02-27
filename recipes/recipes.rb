@@ -33,7 +33,7 @@ node.expand!('disk').recipes.each do |recipe|
   if node[recipe] and node[recipe]['firewall'] and node[recipe]['firewall']['rules']
     rules = node[recipe]['firewall']['rules']
     Chef::Log.debug "ufw::recipes:#{recipe}:rules #{rules}"
-    node.set['firewall']['rules'].concat(rules) unless rules.nil?
+    node.set['firewall']['rules'] = node['firewall']['rules'] + rules unless rules.nil?
   end
 end
 
